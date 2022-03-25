@@ -1,0 +1,19 @@
+{
+  "name": "the-chase",
+  "version": "1.0.0",
+  "description": "A game based on the popular tv show",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicomarvar/the-chase.git"
+  },
+  "author": "nicomarvar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicomarvar/the-chase/issues"
+  },
+  "homepage": "https://github.com/nicomarvar/the-chase#readme"
+}
