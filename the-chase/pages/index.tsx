@@ -9,7 +9,7 @@ const Home: NextPage = () => {
         <button onClick={() => {service.createDocumentinCollection("games",{country: "England", name: "London"})}}>
          TEST FETCH
         </button>
-        <SettingsForm></SettingsForm>
+        <SettingsForm/>
       </>
   )
 }
