@@ -33,12 +33,12 @@ export type TGlobalSettings = {
     };
     questions: {
         finalChase: {
-            setA: TQuestions[];
-            setB: TQuestions[];
+            setA: TQuestions[] | undefined;
+            setB: TQuestions[] | undefined;
         };
-        playerOne: TPlayerQuestions;
-        playerTwo: TPlayerQuestions;
-        playerThree: TPlayerQuestions;
-        playerFour: TPlayerQuestions;
+        playerOne: TPlayerQuestions | undefined;
+        playerTwo: TPlayerQuestions | undefined;
+        playerThree: TPlayerQuestions | undefined;
+        playerFour: TPlayerQuestions | undefined;
     }
 }
