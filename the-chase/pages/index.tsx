@@ -4,7 +4,7 @@ import * as service from '../lib/firebase/fbs-db-services';
 const Home: NextPage = () => {
   return (
       <>
-        <button onClick={() => {service.createDocumentinCollection("users",{country: "England", name: "London"})}}>
+        <button onClick={() => {service.createDocumentinCollection("games",{country: "England", name: "London"})}}>
          TEST FETCH
         </button>
       </>

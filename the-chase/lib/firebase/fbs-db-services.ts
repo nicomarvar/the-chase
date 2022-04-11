@@ -29,7 +29,7 @@ export async function updateDocWithIDFromCollection(coll:string, id:string, data
 
 export async function createDocumentinCollection(coll:string, data:any){
     console.log("called")
-    const id = uid(8)
+    const id = uid(20)
     const newDoc = await setDoc(doc(db, coll, id), {
         ...data,
         id: id
