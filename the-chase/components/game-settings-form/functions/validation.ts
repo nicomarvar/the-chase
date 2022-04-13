@@ -1,6 +1,8 @@
 import { uid } from "uid";
 
-import * as T from"../settings-form.types"
+import * as T from"../settings-form.types";
+
+
 
 export const baseOptions: T.TGlobalSettings = {
     id: "id",
@@ -45,4 +47,37 @@ export const baseOptions: T.TGlobalSettings = {
         playerThree: undefined,
         playerFour: undefined,
     }
+}
+
+//Trim form Data
+export const trimData = elements => {
+    return Array.from(elements).filter(element => element.tagName !== "BUTTON").map( element => {
+        return {
+            tag: element.tagName,
+            field: element.name,
+            value: element.value
+        }
+    })
+}
+
+//Check for empty fields
+const validateInputs = trimmedData => {
+
+    trimmedData = trimmedData.filter(element => element.tag === "INPUT");
+
+    if(!trimmedData.every(element => element.value !== "")){
+        return "All players must provide a name."
+    }
+    
+    if(!trimmedData.every(
+        element => element.tag === "INPUT" && /[A-Za-z]$/i.test(element.value))){
+        return "Names can only have letters."
+    }
+
+    return true
+}
+
+
+export function test(param){
+    console.log(validateInputs(trimData(param)))
 }

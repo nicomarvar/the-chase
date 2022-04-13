@@ -15,10 +15,15 @@ function SettingsForm(){
     }
 
     return (
-        <form>
-            <label htmlFor="playersNumber">How many players?</label>
+        <form onSubmit={(e) => {e.preventDefault();
+            V.test(e.target.elements)}}>
 
-            <select name="playersNumber" onChange={(e) => {handleOptions(e.target.value)}}>
+            <label htmlFor="numberOfPlayers">How many players?</label>
+
+            <select 
+            name="numberOfPlayers" 
+            onChange={(e) => {handleOptions(e.target.value)}}
+            defaultValue={1}>
                 <option value="1"> One Player </option>
                 <option value="2"> Two Players </option>
                 <option value="3"> Three Players </option>
@@ -47,8 +52,9 @@ function SettingsForm(){
                     </label>
 
                     <select
-                    name={`playerDifficulty`} 
+                    name={`player${id+1}Difficulty`} 
                     key={`select${id+1}`}
+                    defaultValue="normal"
                     >
                         <option value="easy">Easy</option>
                         <option value="normal"> Normal </option>
@@ -66,7 +72,7 @@ function SettingsForm(){
                 <option value="hard"> Hard </option>
             </select>
 
-            <button type="submit"> START </button>
+            <button type="submit"> New Game </button>
         </form>
     )
 }
