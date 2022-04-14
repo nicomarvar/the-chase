@@ -55,4 +55,54 @@ export type TFetchOptions = {
     phase: "cashBuilder" | "headToHead" | "finalChase";
 }
 
-export type TFetchResponse = {[key: string] : string | string[];}[]
+export type TFetchResponse = {
+    category: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+}
+
+export const baseOptions: TGlobalSettings = {
+    id: "id",
+    phase: {
+        cashBuilder: false,
+        headToHead: false,
+        finalChase: false
+    },
+    players: {
+        playerOne: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "normal",
+            wasCaught: false
+        },
+        playerTwo: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "normal",
+            wasCaught: false
+        },
+        playerThree: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "normal",
+            wasCaught: false
+        },
+        playerFour: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "normal",
+            wasCaught: false
+        }
+    },
+    questions:{
+        finalChase:{
+            setA: undefined,
+            setB: undefined
+        },
+        playerOne: undefined,
+        playerTwo: undefined,
+        playerThree: undefined,
+        playerFour: undefined,
+    }
+}

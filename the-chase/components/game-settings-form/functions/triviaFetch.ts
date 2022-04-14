@@ -44,9 +44,6 @@ async function getQuestions(options: T.TFetchOptions): Promise<T.TFetchResponse[
     return data
 }
 
-const html = "What was Sir Handel&#039;s original name in &quot;The Railway Series&quot; and it&#039;s animated counterpart &quot;Thomas and Friends?&quot;"
-
-
 export default async function triviaFetch(options: T.TFetchOptions){
     const fetched = await getQuestions(options)
     const trimmed = trimData(fetched)

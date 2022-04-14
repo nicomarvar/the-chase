@@ -2,13 +2,12 @@ import React from "react";
 import { useState } from "react";
 
 import * as T from "./settings-form.types";
-import * as V from "./functions/validation";
 import css from "./styles.module.css"
 import triviaFetch from "./functions/triviaFetch";
 
 function SettingsForm(){
 
-    const [gameOptions, setGameOptions] = useState<T.TGlobalSettings>(V.baseOptions)
+    const [gameOptions, setGameOptions] = useState<T.TGlobalSettings>(T.baseOptions)
     const [playersNumber, setPLayersNumber] = useState(1);
     const players = Array(playersNumber).fill("");
     function handleOptions(value: string){
