@@ -44,7 +44,7 @@ export type TGlobalSettings = {
     }
 }
 
-export type TFormElementArr = {
+export type TFormElement = {
     tag: string,
     field: string,
     value: string

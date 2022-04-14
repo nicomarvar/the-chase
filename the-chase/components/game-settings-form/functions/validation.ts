@@ -3,18 +3,24 @@ import { uid } from "uid";
 import * as T from "../settings-form.types";
 
 //Trim form Data
-export const trimData = (elements) => {
+const trimData = (e:  
+    React.FormEvent<HTMLFormElement>): T.TFormElement[] => {
+
+    const target = e.target as HTMLFormElement;
+    const elements = target.elements
+
     return Array.from(elements).filter((element) => element.tagName !== "BUTTON").map( (element) => {
+        const inputElement = element as HTMLInputElement;
         return {
-            tag: element.tagName,
-            field: element.name,
-            value: element.value
+            tag: inputElement.tagName,
+            field: inputElement.name,
+            value: inputElement.value
         }
     })
 }
 
 //Check for empty fields
-const validateInputs = (trimmedData: T.TFormElementArr[]) => {
+const validateInputs = (trimmedData: T.TFormElement[]) => {
 
     trimmedData = trimmedData.filter(elmnt => elmnt.tag === "INPUT");
 
@@ -30,4 +36,11 @@ const validateInputs = (trimmedData: T.TFormElementArr[]) => {
     return true
 }
 
+export function validation(e:  
+    React.FormEvent<HTMLFormElement>){
+
+        const data = trimData(e);
+        return validateInputs(data)
+
+}
 
