@@ -1,6 +1,6 @@
 import { uid } from "uid";
 
-import * as T from"../settings-form.types";
+import * as T from "../settings-form.types";
 
 
 
@@ -50,8 +50,8 @@ export const baseOptions: T.TGlobalSettings = {
 }
 
 //Trim form Data
-export const trimData = elements => {
-    return Array.from(elements).filter(element => element.tagName !== "BUTTON").map( element => {
+export const trimData = (elements) => {
+    return Array.from(elements).filter((element) => element.tagName !== "BUTTON").map( (element) => {
         return {
             tag: element.tagName,
             field: element.name,
@@ -61,16 +61,16 @@ export const trimData = elements => {
 }
 
 //Check for empty fields
-const validateInputs = trimmedData => {
+const validateInputs = (trimmedData: T.TFormElementArr[]) => {
 
-    trimmedData = trimmedData.filter(element => element.tag === "INPUT");
+    trimmedData = trimmedData.filter(elmnt => elmnt.tag === "INPUT");
 
-    if(!trimmedData.every(element => element.value !== "")){
+    if(!trimmedData.every(elmnt => elmnt.value !== "")){
         return "All players must provide a name."
     }
     
     if(!trimmedData.every(
-        element => element.tag === "INPUT" && /[A-Za-z]$/i.test(element.value))){
+        elmnt => elmnt.tag === "INPUT" && /[A-Za-z]$/i.test(elmnt.value))){
         return "Names can only have letters."
     }
 
@@ -78,6 +78,3 @@ const validateInputs = trimmedData => {
 }
 
 
-export function test(param){
-    console.log(validateInputs(trimData(param)))
-}

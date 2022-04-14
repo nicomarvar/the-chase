@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 
 import * as T from "./settings-form.types";
-import * as V from "./functions/validation"
+import * as V from "./functions/validation";
 import css from "./styles.module.css"
+import triviaFetch from "./functions/triviaFetch";
 
 function SettingsForm(){
 
@@ -15,8 +16,8 @@ function SettingsForm(){
     }
 
     return (
-        <form onSubmit={(e) => {e.preventDefault();
-            V.test(e.target.elements)}}>
+        <form onSubmit={async (e) => {e.preventDefault();
+            console.log(await triviaFetch({phase:"headToHead", difficulty: "easy"}))}}>
 
             <label htmlFor="numberOfPlayers">How many players?</label>
 
