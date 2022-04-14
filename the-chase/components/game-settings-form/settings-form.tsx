@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import triviaFetch from "./functions/triviaFetch";
 import { validation } from "./functions/validation";
 
 import * as T from "./settings-form.types";
@@ -13,12 +14,16 @@ function SettingsForm(){
     function handleOptions(value: string){
         setPLayersNumber(Number(value))
     }
+    const test: T.TFetchOptions ={
+        difficulty: "medium",
+        phase: "headToHead",
+    }
 
     return (
         <form onSubmit={async (e:  
             React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
-                console.log(validation(e))
+                console.log(validation(e),"\n", await triviaFetch(test))
         }}>
 
             <label htmlFor="numberOfPlayers">How many players?</label>
