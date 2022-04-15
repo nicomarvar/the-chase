@@ -44,7 +44,7 @@ async function getQuestions(options: T.TFetchOptions): Promise<T.TFetchResponse[
     return data
 }
 
-export default async function triviaFetch(options: T.TFetchOptions){
+export async function triviaFetch(options: T.TFetchOptions){
     const fetched = await getQuestions(options)
     const trimmed = trimData(fetched)
     return trimmed

@@ -25,6 +25,7 @@ type TPlayerQuestions = {
 
 export type TGlobalSettings = {
     id:string;
+    chaserDifficulty: string;
     phase: TPhases;
     players: {
         playerOne: TPlayer;
@@ -64,6 +65,7 @@ export type TFetchResponse = {
 
 export const baseOptions: TGlobalSettings = {
     id: "id",
+    chaserDifficulty: "medium",
     phase: {
         cashBuilder: false,
         headToHead: false,
@@ -73,25 +75,25 @@ export const baseOptions: TGlobalSettings = {
         playerOne: {
             cash: 0,
             name:"pc",
-            quizLevel: "normal",
+            quizLevel: "medium",
             wasCaught: false
         },
         playerTwo: {
             cash: 0,
             name:"pc",
-            quizLevel: "normal",
+            quizLevel: "medium",
             wasCaught: false
         },
         playerThree: {
             cash: 0,
             name:"pc",
-            quizLevel: "normal",
+            quizLevel: "medium",
             wasCaught: false
         },
         playerFour: {
             cash: 0,
             name:"pc",
-            quizLevel: "normal",
+            quizLevel: "medium",
             wasCaught: false
         }
     },

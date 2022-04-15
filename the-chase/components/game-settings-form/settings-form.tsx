@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import triviaFetch from "./functions/triviaFetch";
-import { validation } from "./functions/validation";
+import { handleSubmit } from "./functions/handleSubmit";
 
 import * as T from "./settings-form.types";
 import css from "./styles.module.css";
@@ -15,7 +14,7 @@ function SettingsForm(){
         setPLayersNumber(Number(value))
     }
     const test: T.TFetchOptions ={
-        difficulty: "medium",
+        difficulty: "hard",
         phase: "headToHead",
     }
 
@@ -23,7 +22,7 @@ function SettingsForm(){
         <form onSubmit={async (e:  
             React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
-                console.log(validation(e),"\n", await triviaFetch(test))
+                console.log(handleSubmit(e))
         }}>
 
             <label htmlFor="numberOfPlayers">How many players?</label>
@@ -62,10 +61,10 @@ function SettingsForm(){
                     <select
                     name={`player${id+1}Difficulty`} 
                     key={`select${id+1}`}
-                    defaultValue="normal"
+                    defaultValue="medium"
                     >
                         <option value="easy">Easy</option>
-                        <option value="normal"> Normal </option>
+                        <option value="medium"> Normal </option>
                         <option value="hard"> Hard </option>
                     </select>
                     </div>
@@ -74,9 +73,9 @@ function SettingsForm(){
             
             <label htmlFor="chaserDifficulty">Chaser Level: </label>
 
-            <select name="chaserDifficulty">
+            <select name="chaserDifficulty" defaultValue="medium">
                 <option value="easy"> Easy </option>
-                <option value="normal"> Normal </option>
+                <option value="medium"> Normal </option>
                 <option value="hard"> Hard </option>
             </select>
 
