@@ -1,1 +1,1 @@
-# The chase
+# The chase app
