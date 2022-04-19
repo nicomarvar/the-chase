@@ -27,9 +27,8 @@ export async function updateDocWithIDFromCollection(coll:string, id:string, data
     console.log(`Document with id: ${id} from collection ${coll} has been updated to: `, _data);    
 }
 
-export async function createDocumentinCollection(coll:string, data:any){
+export async function createDocumentinCollection(coll:string, data:any, id: string){
     console.log("called")
-    const id = uid(20)
     const newDoc = await setDoc(doc(db, coll, id), {
         ...data,
         id: id

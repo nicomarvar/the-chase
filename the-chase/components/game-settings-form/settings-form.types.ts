@@ -26,6 +26,7 @@ type TPlayerQuestions = {
 export type TGlobalSettings = {
     id:string;
     chaserDifficulty: string;
+    chaserName: null | string;
     phase: TPhases;
     players: {
         playerOne: TPlayer;
@@ -35,13 +36,13 @@ export type TGlobalSettings = {
     };
     questions: {
         finalChase: {
-            setA: TQuestions[] | undefined;
-            setB: TQuestions[] | undefined;
+            setA: TQuestions[] | undefined | null;
+            setB: TQuestions[] | undefined | null;
         };
-        playerOne: TPlayerQuestions | undefined;
-        playerTwo: TPlayerQuestions | undefined;
-        playerThree: TPlayerQuestions | undefined;
-        playerFour: TPlayerQuestions | undefined;
+        playerOne: TPlayerQuestions | undefined | null;
+        playerTwo: TPlayerQuestions | undefined | null;
+        playerThree: TPlayerQuestions | undefined | null;
+        playerFour: TPlayerQuestions | undefined | null;
     }
 }
 
@@ -52,7 +53,7 @@ export type TFormElement = {
 }
 
 export type TFetchOptions = {
-    difficulty: "easy" | "medium" | "hard";
+    difficulty: string;
     phase: "cashBuilder" | "headToHead" | "finalChase";
 }
 
@@ -66,6 +67,7 @@ export type TFetchResponse = {
 export const baseOptions: TGlobalSettings = {
     id: "id",
     chaserDifficulty: "medium",
+    chaserName: null,
     phase: {
         cashBuilder: false,
         headToHead: false,
@@ -103,8 +105,8 @@ export const baseOptions: TGlobalSettings = {
             setB: undefined
         },
         playerOne: undefined,
-        playerTwo: undefined,
-        playerThree: undefined,
-        playerFour: undefined,
+        playerTwo: null,
+        playerThree: null,
+        playerFour: null,
     }
 }

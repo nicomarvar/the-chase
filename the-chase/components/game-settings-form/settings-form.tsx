@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { handleSubmit } from "./functions/handleSubmit";
+import * as FRBS from "../../lib/firebase/fbs-db-services"
 
 import * as T from "./settings-form.types";
 import css from "./styles.module.css";
+import { triviaFetch } from "./functions/triviaFetch";
 
 function SettingsForm(){
 
@@ -22,7 +24,17 @@ function SettingsForm(){
         <form onSubmit={async (e:  
             React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
-                console.log(handleSubmit(e))
+                const settingsData = await handleSubmit(e);
+                if(typeof settingsData !== "string"){
+                    FRBS.createDocumentinCollection("games", settingsData, settingsData?.id)
+                    return "Success"
+                }
+                else{
+                    console.log(settingsData)
+                    return settingsData
+                }
+
+                console.log(settingsData)
         }}>
 
             <label htmlFor="numberOfPlayers">How many players?</label>
