@@ -11,10 +11,11 @@ type TPlayer = {
     wasCaught: boolean;
 }
 
-type TQuestions = {
+export type TQuestions = {
+    category?: string;
     question: string;
     correctAnswer: string;
-    answers: [string, string, string, string] | [string, string];
+    answers: string[];
 }
 
 type TPlayerQuestions = {
@@ -24,6 +25,8 @@ type TPlayerQuestions = {
 
 export type TGlobalSettings = {
     id:string;
+    chaserDifficulty: string;
+    chaserName: null | string;
     phase: TPhases;
     players: {
         playerOne: TPlayer;
@@ -33,12 +36,77 @@ export type TGlobalSettings = {
     };
     questions: {
         finalChase: {
-            setA: TQuestions[];
-            setB: TQuestions[];
+            setA: TQuestions[] | undefined | null;
+            setB: TQuestions[] | undefined | null;
         };
-        playerOne: TPlayerQuestions;
-        playerTwo: TPlayerQuestions;
-        playerThree: TPlayerQuestions;
-        playerFour: TPlayerQuestions;
+        playerOne: TPlayerQuestions | undefined | null;
+        playerTwo: TPlayerQuestions | undefined | null;
+        playerThree: TPlayerQuestions | undefined | null;
+        playerFour: TPlayerQuestions | undefined | null;
+    }
+}
+
+export type TFormElement = {
+    tag: string,
+    field: string,
+    value: string
+}
+
+export type TFetchOptions = {
+    difficulty: string;
+    phase: "cashBuilder" | "headToHead" | "finalChase";
+}
+
+export type TFetchResponse = {
+    category: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+}
+
+export const baseOptions: TGlobalSettings = {
+    id: "id",
+    chaserDifficulty: "medium",
+    chaserName: null,
+    phase: {
+        cashBuilder: false,
+        headToHead: false,
+        finalChase: false
+    },
+    players: {
+        playerOne: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "medium",
+            wasCaught: false
+        },
+        playerTwo: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "medium",
+            wasCaught: false
+        },
+        playerThree: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "medium",
+            wasCaught: false
+        },
+        playerFour: {
+            cash: 0,
+            name:"pc",
+            quizLevel: "medium",
+            wasCaught: false
+        }
+    },
+    questions:{
+        finalChase:{
+            setA: undefined,
+            setB: undefined
+        },
+        playerOne: undefined,
+        playerTwo: null,
+        playerThree: null,
+        playerFour: null,
     }
 }
